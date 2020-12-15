@@ -4,25 +4,33 @@
 RPi Monitor API/Webserver
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, Response
 from utilities import cpu_clock, cpu_temp, mem_usage, storage
 
 app = Flask(__name__)
 
+
+header = {
+    "Access-Control-Allow-Origin": "http://localhost:8080"
+}
 
 @app.route('/cpu-clock')
 def cpu_clock_endpoint():
     """
     Returns current CPU Clock Speed
     """
-    return cpu_clock()
+    resp = Response(cpu_clock)
+    resp.headers = header
+    return resp
 
 @app.route('/cpu-temp')
 def cpu_temp_endpoint():
     """
     Returns current CPU temp
     """
-    return cpu_temp()
+    resp = Response(cpu_temp())
+    resp.headers = header
+    return resp
 
 # Memory Information
 
@@ -31,7 +39,9 @@ def mem_usage_endpoint():
     """
     Returns current memory usage
     """
-    return mem_usage()
+    resp = Response(mem_usage)
+    resp.headers = header
+    return resp
 
 # Storage Information
 
@@ -40,7 +50,9 @@ def storage_information_endpoint():
     """
     Returns current storage information
     """
-    return storage()
+    resp = Response(storage)
+    resp.headers = header
+    return resp
 
 @app.route("/")
 def serve_web_interface():
