@@ -62,7 +62,10 @@ def parse_free(free_output):
         cleaned_line = []
         for j in line:
             if j != '':
-                cleaned_line.append(int(j))
+                try:
+                    cleaned_line.append(int(j))
+                except ValueError:
+                    pass
 
         if number == 0:
             output['Memory'] = {k:v for k,v in zip(categories, cleaned_line)}
@@ -111,3 +114,7 @@ def storage():
         return {}
 
     return output
+
+
+
+mem_usage()
