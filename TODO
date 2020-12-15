@@ -1,0 +1,7 @@
+[ ] - Add try except for the api calls.
+[ ] - Test on RPi
+[x] - Create Base Web Interface - just the numbers and a base structure
+[ ] - Create Docker Container for the API
+[ ] - Create Docker Container for the WebInterface
+[ ] - Create Docker-Compose for the application
+[ ] - Add Graphs
