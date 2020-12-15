@@ -60,34 +60,46 @@
         const CURRENT_MEM_USAGE = LOCATION + 'mem-usage'
         const CURRENT_DISC_USAGE = LOCATION + 'storage-information'
 
-        $(document).setInterval(function () {
-            $.get(CURRENT_CPU_TEMP)
-            .done((data) => {
-                
-            })
-            .fail(function () {
-            
-            })
-            $.get(CURRENT_CPU_CLOCK)
-            .done((data) => {
-            })
-            .fail(function () {
-            
-            })
-            $.get(CURRENT_MEM_USAGE)
-            .done((data) => {
-            })
-            .fail(function () {
-            
-            })
-            $.get(CURRENT_DISC_USAGE)
-            .done((data) => {
+        $(document).ready(function () {
 
-            })
-            .fail(function () {
-            
-            })
-        }, 5000)
+            var intervals = setInterval(function() {
+                $.get(CURRENT_CPU_TEMP)
+                .done((data) => {
+                    console.log("CPU Temp")
+                    console.log(data)
+                })
+                .fail(function () {
+                    console.log(error)
+                });
+
+                $.get(CURRENT_CPU_CLOCK)
+                .done((data) => {
+                    console.log("CPU Clock")
+                    console.log(data)
+                })
+                .fail(function (error) {
+                    console.log(error)
+                });
+
+                $.get(CURRENT_MEM_USAGE)
+                .done((data) => {
+                    console.log("MEM")
+                    console.log(data)
+                })
+                .fail(function () {
+                    console.log(error)
+                });
+
+                $.get(CURRENT_DISC_USAGE)
+                .done((data) => {
+                    console.log("DISC")
+                    console.log(data)
+                })
+                .fail(function () {
+                    console.log(error)
+                });
+            }, 5000);
+        })
 
     </script>
 
