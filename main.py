@@ -19,18 +19,14 @@ def cpu_clock_endpoint():
     """
     Returns current CPU Clock Speed
     """
-    resp = Response(cpu_clock)
-    resp.headers = header
-    return resp
+    return cpu_clock()
 
 @app.route('/cpu-temp')
 def cpu_temp_endpoint():
     """
     Returns current CPU temp
     """
-    resp = Response(cpu_temp())
-    resp.headers = header
-    return resp
+    return cpu_temp()
 
 # Memory Information
 
@@ -39,9 +35,7 @@ def mem_usage_endpoint():
     """
     Returns current memory usage
     """
-    resp = Response(mem_usage)
-    resp.headers = header
-    return resp
+    return mem_usage()
 
 # Storage Information
 
@@ -50,9 +44,7 @@ def storage_information_endpoint():
     """
     Returns current storage information
     """
-    resp = Response(storage)
-    resp.headers = header
-    return resp
+    return storage()
 
 @app.route("/")
 def serve_web_interface():

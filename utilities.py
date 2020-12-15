@@ -35,6 +35,7 @@ def cpu_temp():
     temp = subprocess.check_output(vcgencmd("measure_temp"))
     return temp.split('=')[-1].strip().split("'")[0]
 
+
 def cpu_clock():
     """
     Returns current CPU clock speed
@@ -51,7 +52,6 @@ def parse_free(free_output):
 
     # Removing Headers, and text
     no_headers = [i.split("\\n")[0].strip() for i in free_output.split(':')[1:]]
-
 
     categories = ['total', 'used', 'free', 'shared', 'cached', 'available']
     output = {'Memory': '', "Swap": ''}
