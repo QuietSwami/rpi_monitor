@@ -63,12 +63,7 @@
         $(document).ready(function () {
 
             var intervals = setInterval(function() {
-                $.get(
-                    {
-                        url: CURRENT_CPU_TEMP,  
-                        dataType: "jsonp"    
-                    }
-                    )
+                $.get(CURRENT_CPU_TEMP)
                 .done((data) => {
                     console.log("CPU Temp")
                     console.log(data)
@@ -91,7 +86,7 @@
                     console.log("MEM")
                     console.log(data)
                 })
-                .fail(function () {
+                .fail(function (error) {
                     console.log(error)
                 });
 
@@ -100,7 +95,7 @@
                     console.log("DISC")
                     console.log(data)
                 })
-                .fail(function () {
+                .fail(function (error) {
                     console.log(error)
                 });
             }, 10000);

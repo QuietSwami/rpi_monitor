@@ -4,7 +4,7 @@
 RPi Monitor API/Webserver
 """
 
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, jsonify
 from utilities import cpu_clock, cpu_temp, mem_usage, storage
 
 app = Flask(__name__)
@@ -19,14 +19,14 @@ def cpu_clock_endpoint():
     """
     Returns current CPU Clock Speed
     """
-    return cpu_clock()
+    return jsonify(cpu_clock())
 
 @app.route('/cpu-temp')
 def cpu_temp_endpoint():
     """
     Returns current CPU temp
     """
-    return cpu_temp()
+    return jsonify(cpu_temp())
 
 # Memory Information
 
@@ -35,7 +35,7 @@ def mem_usage_endpoint():
     """
     Returns current memory usage
     """
-    return mem_usage()
+    return jsonify(mem_usage())
 
 # Storage Information
 
@@ -44,7 +44,7 @@ def storage_information_endpoint():
     """
     Returns current storage information
     """
-    return storage()
+    return jsonify(storage())
 
 @app.route("/")
 def serve_web_interface():
