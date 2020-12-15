@@ -114,7 +114,3 @@ def storage():
         return {}
 
     return output
-
-
-
-mem_usage()
